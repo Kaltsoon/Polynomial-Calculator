@@ -1,0 +1,12 @@
+AIHEMÄÄRITTELY
+--------------
+
+Projektin nimi on "Poly" ja tarkoituksena on luoda ohjelma, joka suorittaa
+laskutoimituksia polynomeilla ja esittää niitä graafisesti. Ohjelmalle tulisi antaa
+komentoja, jotka se suorittaa, esim roots, multiply, jne. Kommennon täytyy pelkän 
+vastauksen lisäksi antaa kuvaus laskutoimituksesta. Komentojen lisäämisen tulee
+olla kooditasolla helppoa. Käyttöliittymä komentorivillä on yksinkertaisuudessaan
+syötekenttä, syöttöpainike ja alue, jossa ohjelma esittää vastauksen. Kuvaajien piirtämistä
+varten täytyy tehdä oma käyttöliittymä ja komennolla draw tulisi voida piirtä käyttäjän
+haluamat polynomit. Myös mm. kuvaajan skaalaaminen olisi hieno ominaisuus. Ohjelman
+kieli on englanti.
