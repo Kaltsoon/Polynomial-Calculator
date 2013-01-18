@@ -1,4 +1,4 @@
-AIHEMÄÄRITTELY
+﻿AIHEMÄÄRITTELY
 --------------
 
 Projektin nimi on "Poly" ja tarkoituksena on luoda ohjelma, joka suorittaa
@@ -10,3 +10,16 @@ syötekenttä, syöttöpainike ja alue, jossa ohjelma esittää vastauksen. Kuva
 varten täytyy tehdä oma käyttöliittymä ja komennolla draw tulisi voida piirtä käyttäjän
 haluamat polynomit. Myös mm. kuvaajan skaalaaminen olisi hieno ominaisuus. Ohjelman
 kieli on englanti.
+
+Käyttäjät:
+
+- Ohjelman käyttäjä
+
+Toiminnalisuudet:
+
+- Komennon syöttäminen
+- Laskutoimituksen ja sen ratkaisun tarkkailu
+- Käytössä olevien komentojen ja niiden ominaisuuksien tarkkaileminen
+- Kuvaajan piirtäminen
+  - Kuvaajan skaalaaminen ja liikuttaminen
+  - Kuvaajan pisteiden tarkkaileminen

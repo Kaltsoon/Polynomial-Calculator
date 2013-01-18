@@ -1,0 +1,5 @@
+TUNTIKIRJANPITO
+---------------
+
+12.01.2013 - Githubin perustus, aihem‰‰rittely, Netbeansprojekti -kansio 1h.
+18.01.2013 - Luokkakaavioita ja ensimm‰iset luokat 2h.
