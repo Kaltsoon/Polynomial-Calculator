@@ -46,6 +46,7 @@ public class DerivativeTest {
         derivative.handleParameters("derivative(0)");
         assertEquals("0", derivative.execute());
     }
+    @Test
     public void derivaattoja(){
         derivative.handleParameters("derivative(3x^2+2x+1)");
         assertEquals("6x+2", derivative.execute());

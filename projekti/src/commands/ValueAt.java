@@ -10,11 +10,13 @@ import utils.*;
  * @author Kalle
  */
 public class ValueAt implements Command{
-    private int x;
+    private double x;
     private Polynomial polynomial;
     private StringModifier mod;
+    private Fraction frac;
     public ValueAt(){
         mod=new StringModifier();
+        frac=new Fraction();
     }
     @Override
     public String commandDescription() {
@@ -23,11 +25,7 @@ public class ValueAt implements Command{
 
     @Override
     public String execute() {
-        String result="";
-        result+=mod.bestForm(polynomial.valueAt(x));
-        if(result.contains("/")){
-            result+=" (&asymp;" + polynomial.valueAt((double)x) + ")";
-        }
+        String result = polynomial.valueAt(x) + "";
         return result;
     }
 
@@ -39,7 +37,11 @@ public class ValueAt implements Command{
     @Override
     public void handleParameters(String parameters) {
         polynomial=mod.turnIntoPolynomial(mod.readParameters(parameters)[0]);
-        x=Integer.parseInt(mod.readParameters(parameters)[1]);
+        if(mod.readParameters(parameters)[1].contains("/")){
+            x=frac.turnToDecimal(Integer.parseInt(mod.readParameters(parameters)[1].split("/")[0]), Integer.parseInt(mod.readParameters(parameters)[1].split("/")[1]));
+        }else{
+            x=Double.parseDouble(mod.readParameters(parameters)[1]);
+        }
     }
     
 }
