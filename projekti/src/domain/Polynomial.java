@@ -87,8 +87,9 @@ public class Polynomial {
     public int getScale(){
         return scale;
     }
+    @Override
     public String toString(){
-        if(polynomial.size()==0){
+        if(polynomial.isEmpty()){
             return "0";
         }
         String polString="";

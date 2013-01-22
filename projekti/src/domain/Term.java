@@ -47,6 +47,8 @@ public class Term implements Comparable<Term>{
             coeff="1";
         }else if(this.denominator==1 && this.numenator==1){
             coeff="";
+        }else if((this.denominator==-1 || this.numenator==-1) && this.exponent>0){
+            coeff="-";
         }
         else if(this.denominator==1){
             coeff = this.numenator + "";
