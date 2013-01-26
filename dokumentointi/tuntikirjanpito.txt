@@ -6,3 +6,5 @@ TUNTIKIRJANPITO
 19.01.2013 - Olemassaoleviin luokkiin täydennystä, lisää logiikkaluokkia 4h.
 20.01.2013 - Lisää logiikkaluokkia 2h.
 22.01.2013 - Käyttöliittymäluokkia 3h.
+24.01.2013 - Logiikkaluokkien hieomista, käyttöliittymän tekoa 3h.
+26.01.2013 - Javadoceja ja sekvenssikaavioita 2h.
