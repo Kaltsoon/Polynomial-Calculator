@@ -5,7 +5,7 @@
 package commands;
 
 /**
- *
+ * 
  * @author Kalle
  */
 public interface Command {

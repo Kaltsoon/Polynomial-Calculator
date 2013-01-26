@@ -6,8 +6,7 @@ package commands;
 import domain.*;
 import utils.*;
 /**
- *
- * @author Kalle
+ * Jakaa kaksi polynomia keskenään
  */
 public class Divide implements Command{
     private Polynomial divisor;

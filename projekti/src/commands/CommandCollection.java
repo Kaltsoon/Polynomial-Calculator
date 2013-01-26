@@ -6,14 +6,18 @@ package commands;
 import java.util.HashMap;
 import java.util.Map;
 /**
- *
- * @author Kalle
+ * Tallentaa komento-rajapinnan toteuttavia olioita
  */
 public class CommandCollection {
     private Map<String,Command> commands;
     public CommandCollection(){
         commands=new HashMap<String,Command>();
     }
+ /**
+ * Tallentaa komento-rajapinnan toteuttavan olion nimellä
+ * @param komennon nimi
+ * @param komento-rajapinnan toteuttava olio
+ */
     public void addCommand(String name, Command command){
         commands.put(name, command);
     }

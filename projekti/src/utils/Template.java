@@ -5,8 +5,7 @@
 package utils;
 
 /**
- *
- * @author Kalle
+ * Sisältää HTML-templateja
  */
 public class Template {
     public String PolynomialCalculation(String command, String operationDescription, String solution){

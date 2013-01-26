@@ -38,7 +38,7 @@ public class DerivativeTest {
     public void tearDown() {
     }
     @Test
-    public void erikoisTapaukset(){
+    public void erikoistapaukset(){
         derivative.handleParameters("derivative(x)");
         assertEquals("1", derivative.execute());
         derivative.handleParameters("derivative(1)");

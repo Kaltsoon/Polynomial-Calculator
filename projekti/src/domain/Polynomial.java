@@ -6,12 +6,12 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import utils.Fraction;
 
 /**
- *
- * @author Kalle
+ * Sisältää listan termejä
  */
 public class Polynomial {
     private int scale=1;
@@ -21,15 +21,29 @@ public class Polynomial {
         polynomial.add(new Term(numenator,denominator,exponent));
         Collections.sort(polynomial);
     }
+/**
+ * Lisää polynomiin termin
+ * @param Term-olio
+ */
     public void addTerm(Term term){
         polynomial.add(term);
     }
     public void setScale(int a){
         this.scale=a;
     }
+/**
+ * Etsii termin, indeksilläillä
+ * @param indeksi
+ * @return Term-olio
+ */
     public Term termAt(int index){
         return polynomial.get(index);
     }
+/**
+ * Etsii termin, joka on tietty astetta
+ * @param halutun termin aste
+ * @return Term-olio
+ */
     public Term getTermOfDegree(int degree){
         for (Term term : polynomial) {
             if(term.getExponent()==degree){
@@ -38,6 +52,10 @@ public class Polynomial {
         }
         return new Term(0,1,0);
     }
+/**
+ * Kloonaa polynomin
+ * @return polynomial-olio, joka on kyseisen polynomial-olion klooni
+ */
     public Polynomial clone(){
         Polynomial clone = new Polynomial();
         for (Term term : polynomial) {
@@ -45,37 +63,32 @@ public class Polynomial {
         }
         return clone;
     }
+/**
+ * Sieventää polynomin
+ */
     public void reduce(){
-        List<Term> util = polynomial;
-        for(int i=0; i<util.size(); i++){          
-            Term current = util.get(i);
-            if(current.getExponent()<0 || current.getCoefficient()[0]==0 || current.getCoefficient()[1]==0){
-                util.remove(i);
-                continue;
-            }
-            for(int n=0; n<util.size(); n++){
-                if(i==n){
-                    continue;
-                }
-                if(current.getExponent()==util.get(n).getExponent()){
-                    int sum[] = fraction.sum(current.getCoefficient()[0], current.getCoefficient()[1], util.get(n).getCoefficient()[0], util.get(n).getCoefficient()[1]);
-                    util.set(i, new Term(sum[0],sum[1],current.getExponent()));
-                    util.remove(n);
-                    continue;
-                }
-            }
-        }
-        removeZeros();
-    }
-    private void removeZeros(){
+        List<Term> result=new ArrayList<Term>();
+        HashMap<Integer,Term> exponents = new HashMap<Integer,Term>();
         for(int i=0; i<polynomial.size(); i++){
-            Term current = polynomial.get(i);
-            if(current.getCoefficient()[0]==0){
-                polynomial.remove(i);
-                continue;
+            if(!exponents.containsKey(polynomial.get(i).getExponent()) && polynomial.get(i).getExponent()>=0){
+                exponents.put(polynomial.get(i).getExponent(), new Term(polynomial.get(i).getCoefficient()[0],polynomial.get(i).getCoefficient()[1],polynomial.get(i).getExponent()));
+            }else{
+                int sum[] = fraction.sum(exponents.get(polynomial.get(i).getExponent()).getCoefficient()[0], exponents.get(polynomial.get(i).getExponent()).getCoefficient()[1], polynomial.get(i).getCoefficient()[0], polynomial.get(i).getCoefficient()[1]);
+                exponents.put(polynomial.get(i).getExponent(),new Term(sum[0],sum[1],polynomial.get(i).getExponent()));
             }
         }
+        for (int n : exponents.keySet()) {
+            if(exponents.get(n).getCoefficient()[0]!=0){
+                result.add(exponents.get(n));
+            }
+        }
+        Collections.sort(result);
+        polynomial=result;
     }
+/**
+ * Jakaa kaikki polynomin termit halutulla kertoimella
+ * @param taulukko, jonka esimäinen alkio on kertoimen osoittaja ja toinen nimittäjä
+ */
     public void divideWithCoeff(int coeff[]){
         List<Term> result = new ArrayList<Term>();
         for (Term term : polynomial) {
@@ -101,12 +114,21 @@ public class Polynomial {
         }
         return polString;
     }
+/**
+ * Palauttaa polynomin korkeimman asteen
+ * @return polynomin aste
+ */
     public int highestDegree(){
         return polynomial.get(0).getExponent();
     }
     public List<Term> getTerms(){
         return polynomial;
     }
+/**
+ * Jakaa polynomin kaikki termit termillä x^degree
+ * @param eksponentti
+ * @return jaettu polynomia-olio
+ */
     public Polynomial divideWithDegree(int degree){
         Polynomial result = new Polynomial();
         System.out.println(degree);
@@ -116,12 +138,25 @@ public class Polynomial {
         result.reduce();
         return result;
     }
+/**
+ * Palauttaa polynomin termien määrän
+ * @return termien määrä
+ */
     public int termNumber(){
         return polynomial.size();
     }
+/**
+ * Palauttaa polynomin alhaisimman asteen
+ * @return alhaisin aste
+ */
     public int lowestDegree(){
         return polynomial.get(polynomial.size()-1).getExponent();
     }
+/**
+ * Palauttaa polynomin arvon kohdassa x
+ * @param kohta x
+ * @return polynomin arvo kohdassa x (desimaalimuoto)
+ */
     public double valueAt(double x){
         x=x/scale;
         double y=0;
@@ -130,6 +165,11 @@ public class Polynomial {
         }
         return y*scale;
     }
+ /**
+ * Palauttaa polynomin arvon kohdassa x
+ * @param kohta x
+ * @return polynomin arvo kohdassa x (murtolukumuoto)
+ */
     public int[] valueAt(int x){
         int sum[] = {0,1};
         for (Term term : polynomial) {

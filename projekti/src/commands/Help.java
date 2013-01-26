@@ -7,8 +7,7 @@ package commands;
 import java.util.Map;
 import utils.*;
 /**
- *
- * @author Kalle
+ * Esittää kaikkien komentojen kuvaukset
  */
 public class Help implements Command{
     private CommandCollection commandCollection;

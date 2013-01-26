@@ -9,9 +9,8 @@ import javax.swing.SwingUtilities;
 import domain.*;
 import utils.*;
 import gui.GraphGUI;
-/**
- *
- * @author Kalle
+ /**
+ * Laskee polynomin derivaatan
  */
 public class Derivative implements Command{
     private Polynomial polynomial;
@@ -32,6 +31,11 @@ public class Derivative implements Command{
         SwingUtilities.invokeLater(new GraphGUI(result));
         return result.toString();
     }
+ /**
+ * Laskee polynomin derivaatan
+ * @param polynomial-olio
+ * @return derivoitu polynomial-olio
+ */
     public Polynomial derivative(Polynomial polynomial){
         Polynomial result = new Polynomial();
         for(int i=0; i<polynomial.termNumber(); i++){

@@ -16,9 +16,9 @@ import domain.*;
  *
  * @author Kalle
  */
-public class AnalyzingCommandTest {
+public class StringModifierTest {
     private StringModifier mod;
-    public AnalyzingCommandTest() {
+    public StringModifierTest() {
     }
     
     @BeforeClass
@@ -48,5 +48,47 @@ public class AnalyzingCommandTest {
         assertEquals("komento1",mod.readCommand("komento1(plaaplaa,plaa,plaaa)"));
         assertEquals("komento2",mod.readCommand("komento2(plaaplaa,plaa,plaaa)"));
         assertEquals("3komento",mod.readCommand("3komento(plaaplaa,plaa,plaaa)"));
+    }
+     @Test
+    public void PolynomiLuetaanOikeinerikoisiaPolynomeja(){
+        Polynomial pol = new Polynomial();
+        pol.addTerm(new Term(1,1,1));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("x").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(-1,1,1));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("-x").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(1,1,0));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("1").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(0,1,0));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("0").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(1,2,0));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("1/2").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(-2,1,0));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("-2").toString());
+    }
+    public void PolynomiLuetaanOikeintavallisiaPolynomeja(){
+        Polynomial pol = new Polynomial();
+        pol.addTerm(new Term(1,1,1));
+        pol.addTerm(new Term(2,1,2));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("2x^2+x").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(2,1,1));
+        pol.addTerm(new Term(1,1,2));
+        pol.addTerm(new Term(1,1,0));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("x^2+2x+1").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(2,1,1));
+        pol.addTerm(new Term(1,2,2));
+        pol.addTerm(new Term(-1,1,0));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("1/2x^2+2x-1").toString());
+        pol = new Polynomial();
+        pol.addTerm(new Term(-2/3,1,1));
+        pol.addTerm(new Term(3,1,2));
+        pol.addTerm(new Term(-1,5,0));
+        assertEquals(pol.toString(),mod.turnIntoPolynomial("3x^2-2/3x-1/5").toString());
     }
 }

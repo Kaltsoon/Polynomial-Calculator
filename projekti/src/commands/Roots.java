@@ -9,8 +9,7 @@ import java.util.List;
 import domain.*;
 import utils.*;
 /**
- *
- * @author Kalle
+ * Laskee polynomin reaalijuuret, jos ne ovat olemassa
  */
 public class Roots implements Command{
     private Polynomial polynomial;
@@ -45,6 +44,10 @@ public class Roots implements Command{
         }
         return result;
     }
+ /**
+ * Analysoi polynomin ja etsii sen juuret apumetodien kautta
+ * @return lista polynomien reaalijuurista
+ */
     private List<String> getRoots(){
         if(polynomial.lowestDegree()>0){
             roots.add("0");
@@ -59,6 +62,9 @@ public class Roots implements Command{
         }
         return roots;
     }
+ /**
+ * Haarukoi polynomia ja etsii välejä, joista löytyy nollakohta
+ */
     private void analyseNumeric(){
         double bounds[] = rootBounds();
         double step = Math.abs((bounds[0]-bounds[1])/(polynomial.highestDegree()*100));
@@ -68,6 +74,10 @@ public class Roots implements Command{
             }
         }
     }
+ /**
+ * Etsii polynomin nollakohdan tuhannesosan tarkkuudella
+ * @param alkuarvaus (arvo lähellä nollakohtaa)
+ */
     private void newtonsMethod(double x){
         Derivative der = new Derivative();
         Polynomial derivative = der.derivative(polynomial);
@@ -84,12 +94,21 @@ public class Roots implements Command{
         }
         roots.add(x + "");
     }
+ /**
+ * Katsoo, ovatko kaksi lukua eri merkkiset
+ * @param kaksi lukua
+ * @return palauttaa true, jos luvut ovat eri merkkiset, false muutoin
+ */
     private boolean hasDifferentSign(double a, double b){
         if((a<0&&b<0) || (a>0&&b>0)){
             return false;
         }
         return true;
     }
+ /**
+ * Tutkii, millä välillä polynomin nollakohdat ovat
+ * @return palauttaa taulukon, jonka ensimäinen alkio on nollakohdan alaraja ja toinen alkio yläraja
+ */
     private double[] rootBounds(){
         double bounds[] = new double[2];
         Polynomial dividedPolynomial = this.polynomial.clone();
@@ -105,6 +124,11 @@ public class Roots implements Command{
         bounds[1]=bound;
         return bounds;
     }
+ /**
+ * Tutkii, onko double kokonaisluku
+ * @param luku
+ * @return palauttaa false, jos double on kokonaisluku, true muutoin
+ */
     private boolean doubleHasDecimal(double a){
         if(a==(double)((int)a)){
             return true;
@@ -121,6 +145,9 @@ public class Roots implements Command{
             return false;
         }
     }
+ /**
+ * Laskee toisen asteen polynomin nollakohdat
+ */
     private void secondDegreeRoots() {
         // ax^2+bx+c
         int a[] = polynomial.getTermOfDegree(2).getCoefficient();
@@ -148,6 +175,9 @@ public class Roots implements Command{
             
         }
     }
+ /**
+ * Laskee ensimäisen asteen polynomin nollakohdan
+ */
     private void firstDegreeRoots(){
         if(polynomial.termNumber()==1){
             roots.add("0");
@@ -156,6 +186,11 @@ public class Roots implements Command{
         int div[] = fraction.division(-1*polynomial.termAt(1).getCoefficient()[0], polynomial.termAt(1).getCoefficient()[1], polynomial.termAt(0).getCoefficient()[0], polynomial.termAt(0).getCoefficient()[1]);
         roots.add(mod.bestForm(div));
     }
+ /**
+ * Poistaa listan dublikaatit
+ * @param lista merkkijonoja
+ * @return lista merkkijonoja, josta on poistettu dublikaatit
+ */
     private List<String> removeDublicates(List<String> list){
         List<String> result = new ArrayList<String>();
         if(list.isEmpty()){

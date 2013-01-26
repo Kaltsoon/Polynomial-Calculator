@@ -7,8 +7,7 @@ import domain.Polynomial;
 import java.util.ArrayList;
 
 /**
- *
- * @author Kalle
+ * Muokkaa merkijonoesitystä haluttuun muotoon
  */
 public class StringModifier {
     public Polynomial turnIntoPolynomial(String polynomial){
@@ -22,6 +21,11 @@ public class StringModifier {
         }
         return pol;
     }
+/**
+ * Paluttaa merkkijonoesityksenä murtoluvun sievimmän muodon
+ * @param taulukko, jonka esimäinen alkio on murtoluvun osoittaja ja toinen nimittäjä
+ * @return murtoluvun sievin muoto merkkijonona
+ */
     public String bestForm(int fraction[]){
         if(fraction[1]==1 && fraction[0]!=0){
             return fraction[0] + "";
@@ -34,6 +38,11 @@ public class StringModifier {
             return fraction[0] + "/" + fraction[1];
         }
     }
+/**
+ * Jakaa polynomin merkkijonoesityksen termeihin 
+ * @param polynomin merkkijonoesitys
+ * @return lista, jonka alkioita ovat polynomin termien merkkijonoesitykset
+ */
     private ArrayList<String> divideIntoTerms(String polynomi){
         int start=0;
         int end=1;
@@ -48,9 +57,19 @@ public class StringModifier {
         termit.add(polynomi.substring(start,polynomi.length()));
         return termit;
     }
+/**
+ * Lukee merkkijonosta komennon, joka on muotoa komento(parametri)
+ * @param merkkijono, joka on oikeaa muotoa
+ * @return komento erotettuna merkkijonosta
+ */
     public String readCommand(String string){
         return readTill(string,"(");
     }
+/**
+ * Lukee termin merkkijonoesityksestä termin kertoimen
+ * @param termin merkkijonoesitys
+ * @return taulukko, jonka ensimäinen alkio on termin kertoimen osoittaja ja toinen nimittäjä
+ */
     private int[] termCoefficient(String term){
         String firstChar = term.charAt(0) + "";
         if(!term.contains("x") && !term.contains("/")){
@@ -90,6 +109,11 @@ public class StringModifier {
             return palautus;
         }
     }
+/**
+ * Lukee termin merkkijonoesityksestä sen eksponentin
+ * @param termin merkkijonoesitys
+ * @return termin eksponentin lukuarvo
+ */
     private int termExponent(String termi){
         char n = termi.charAt(termi.length()-1);
         String merkki = ""+n;
@@ -109,6 +133,11 @@ public class StringModifier {
             return Integer.parseInt(eksponentti);
         }
     }
+/**
+ * Lukee merkkijonoa tiettyyn merkkiin asti
+ * @param merkkijono ja merkki, johon asti merkkijonoa luetaan
+ * @return merkkijonon alkuosa annettuun merkkiin asti
+ */
     public String readTill(String string, String character){
         char n = string.charAt(0);
         String t = "" + n;
@@ -122,6 +151,11 @@ public class StringModifier {
         }
         return result;
     }
+/**
+ * Lukee merkkijonoa tietystä merkistä alkaen tiettyyn merkkiin asti
+ * @param merkkijono, aloitusmerkki, lopetusmerkki
+ * @return merkkijono josta on leikattu alkuosa aloitusmerkkiin asti ja loppuosa lopetusmerkistä eteenpäin
+ */
     public String readFromTo(String string, String start, String end){
         int stage = string.indexOf(start)+1;
         char n = string.charAt(stage);
@@ -138,6 +172,11 @@ public class StringModifier {
         }
         return tulos;
     }
+/**
+ * Lukee merkkijonosta parametrit
+ * @param merkkijono
+ * @return taulukko parametreista
+ */
     public String[] readParameters(String string){
             String parameters=readFromTo(string,"(",")");
             return parameters.split(",");

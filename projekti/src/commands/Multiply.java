@@ -11,8 +11,7 @@ import javax.swing.SwingUtilities;
 import utils.StringModifier;
 import gui.GraphGUI;
 /**
- *
- * @author Kalle
+ * Kertoo halutut polynomit keskenään
  */
 public class Multiply implements Command{
     private List<Polynomial> polynomials;
@@ -28,9 +27,14 @@ public class Multiply implements Command{
     
     @Override
     public String execute() {
-        return multiplication().toString();
+        return multiplication(this.polynomials).toString();
     }
-    private Polynomial multiplication(){
+ /**
+ * Kertoo listan polynomeja keskenään
+ * @param lista polynomeja
+ * @return polynomien tulo
+ */
+    public Polynomial multiplication(List<Polynomial> polynomials){
         Polynomial current = polynomials.get(0);
         for(int i=1; i<polynomials.size(); i++){
             current = multiplyTwo(current,polynomials.get(i));
@@ -39,6 +43,11 @@ public class Multiply implements Command{
         SwingUtilities.invokeLater(new GraphGUI(current));
         return current;
     }
+ /**
+ * Kertoo kaksi polynomia keskenään
+ * @param kaksi polynomial-oliota
+ * @return polynomien tulo
+ */
     public Polynomial multiplyTwo(Polynomial n, Polynomial t){
         Fraction fraction = new Fraction();
         Polynomial solution = new Polynomial();

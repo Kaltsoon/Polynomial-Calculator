@@ -37,7 +37,7 @@ public class DivideTest {
     public void tearDown() {
     }
     @Test
-    public void erikoisTapaukset(){
+    public void erikoistapaukset(){
         divide.handleParameters("divide(x,1)");
         assertEquals("x", divide.execute());
         divide.handleParameters("divide(x,1/3)");
@@ -52,9 +52,9 @@ public class DivideTest {
         assertEquals("x", divide.execute());
     }
     @Test
-    public void jakolaskuja(){
+    public void osamaaria(){
         divide.handleParameters("divide(1/2x^5-x^2+5x-2/3,x^2+2x+1)");
-        assertEquals("1/2x^3-1x^2+3/2x-3 and the remainder is 19/2x+7/3", divide.execute());
+        assertEquals("1/2x^3-x^2+3/2x-3 and the remainder is 19/2x+7/3", divide.execute());
         divide.handleParameters("divide(5x^3-3x^2+2x+1,-4x+2)");
         assertEquals("-5/4x^2+1/8x-7/16 and the remainder is 15/8", divide.execute());
         divide.handleParameters("divide(x^2+2x+1,x+1)");

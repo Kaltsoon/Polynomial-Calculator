@@ -6,8 +6,7 @@ package commands;
 import domain.*;
 import utils.*;
 /**
- *
- * @author Kalle
+ * Laskee polynomin arvon kohdassa x
  */
 public class ValueAt implements Command{
     private double x;

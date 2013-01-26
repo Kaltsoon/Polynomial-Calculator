@@ -11,8 +11,7 @@ import domain.*;
 import utils.StringModifier;
 import gui.*;
 /**
- *
- * @author Kalle
+ * Piirtää halutut polynomit
  */
 public class Draw implements Command{
     private List<Polynomial> polynomials;

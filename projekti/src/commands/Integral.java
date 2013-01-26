@@ -12,8 +12,7 @@ import utils.Fraction;
 import utils.StringModifier;
 import gui.*;
 /**
- *
- * @author Kalle
+ * Laskee määrittelemättömiä ja määrättäjy integraaleja
  */
 public class Integral implements Command{
     private Polynomial polynomial;
@@ -34,7 +33,7 @@ public class Integral implements Command{
 
     @Override
     public String execute() {
-        Polynomial integrated = integrate();
+        Polynomial integrated = integrate(this.polynomial);
         integrated.reduce();
         List<Polynomial> pols = new ArrayList<Polynomial>();
         pols.add(integrated);
@@ -74,12 +73,18 @@ public class Integral implements Command{
             polynomial=mod.turnIntoPolynomial(param[0]);
         }
     }
-    private Polynomial integrate(){
+/**
+ * Integroi polynomin
+ * @param polynomial-olio
+ * @param integroitu polynomial-olio
+ */
+    private Polynomial integrate(Polynomial polynomial){
         Polynomial result = new Polynomial();
         for(int i=0; i<polynomial.termNumber(); i++){
             int mul[] = new int[2];
             if(polynomial.termAt(i).getExponent()!=0){
                 mul = fraction.multiplication(polynomial.termAt(i).getCoefficient()[0], polynomial.termAt(i).getCoefficient()[1], 1, polynomial.termAt(i).getExponent()+1);
+                
             }else{
                 mul[0]=polynomial.termAt(i).getCoefficient()[0];
                 mul[1]=polynomial.termAt(i).getCoefficient()[1];

@@ -12,8 +12,7 @@ import domain.*;
 import gui.GraphGUI;
 import utils.*;
 /**
- *
- * @author Kalle
+ * Laskee haluttujen polynomien summan
  */
 public class Sum implements Command{
     private List<Polynomial> polynomials;
@@ -26,6 +25,7 @@ public class Sum implements Command{
     public String execute() {
         Polynomial result = new Polynomial();
         for (int i = 0; i<polynomials.size(); i++) {
+            polynomials.get(i).reduce();
             List<Term> terms = polynomials.get(i).getTerms();
             Iterator iterator = terms.iterator();
             while(iterator.hasNext()){
@@ -33,11 +33,14 @@ public class Sum implements Command{
             }
         }
         result.reduce();
-        List<Polynomial> pols = new ArrayList<Polynomial>();
-        pols.add(result);
-        SwingUtilities.invokeLater(new GraphGUI(pols));
+        SwingUtilities.invokeLater(new GraphGUI(result));
         return result.toString();
     }
+/**
+ * Laskee kahden polynomin summan
+ * @param kaksi polynomial-oliota
+ * @return summattu polynomial-olio
+ */
     public Polynomial sum(Polynomial a, Polynomial b){
         Polynomial result = new Polynomial();
         List<Polynomial> polynomials = new ArrayList<Polynomial>();
@@ -60,7 +63,7 @@ public class Sum implements Command{
     public String operationDescription() {
         String result = "";
         for (int i=0; i<polynomials.size(); i++) {
-            result+="("+polynomials.get(i).toString()+")";
+            result+=polynomials.get(i).toString();
             if(i!=polynomials.size()-1){
                 result+="+";
             }
