@@ -8,3 +8,5 @@ TUNTIKIRJANPITO
 22.01.2013 - Käyttöliittymäluokkia 3h.
 24.01.2013 - Logiikkaluokkien hieomista, käyttöliittymän tekoa 3h.
 26.01.2013 - Javadoceja ja sekvenssikaavioita 2h.
+30.01.2013 - Bugien korjaamista ja käyttöliittymän viimeistelyä 2h.
+02.02.2013 - Sekvenssikaavioita 1h.
