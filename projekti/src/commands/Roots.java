@@ -86,7 +86,6 @@ public class Roots implements Command{
         double current = x-polynomial.valueAt(x)/derivative.valueAt(x);
         current=Math.round(current*1000.0)/1000.0;
         while(current!=x && current!=0){
-            System.out.println(current);
             x=current;
             current=x-polynomial.valueAt(x)/derivative.valueAt(x);
             x=Math.round(x*1000.0)/1000.0;

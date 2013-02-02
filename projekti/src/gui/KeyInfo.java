@@ -65,14 +65,14 @@ public class KeyInfo implements KeyListener{
         if(list.isEmpty()){
             jPanel.setBackground(new Color(184,86,86));
             jPanel.show();
-            draw.setImage("src/gui/icon2_1.png");
+            draw.setImage("projekti/src/gui/icon2_1.png");
             draw.repaint();
             return "<html><span style='font: 11px arial; color: white;'>No match found</span></html>";
         }
         jPanel.setBackground(new Color(148,179,96));
         String result = "";
         jPanel.show();
-        draw.setImage("src/gui/icon1_1.png");
+        draw.setImage("projekti/src/gui/icon1_1.png");
         draw.repaint();
         result+="<html><span style='font: 11px arial; color: white;'>";
         for(int i=0; i<list.size(); i++){

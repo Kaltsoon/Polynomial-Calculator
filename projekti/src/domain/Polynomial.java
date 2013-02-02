@@ -131,7 +131,6 @@ public class Polynomial {
  */
     public Polynomial divideWithDegree(int degree){
         Polynomial result = new Polynomial();
-        System.out.println(degree);
         for (Term term : polynomial) {
             result.addTerm(term.getCoefficient()[0],term.getCoefficient()[1],term.getExponent()-degree);
         }

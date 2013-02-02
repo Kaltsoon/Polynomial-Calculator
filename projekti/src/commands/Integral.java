@@ -39,7 +39,6 @@ public class Integral implements Command{
         pols.add(integrated);
         if(indefinite==false){
             int b[] = integrated.valueAt(interval[1]);
-            System.out.println(b[0] +"/"+ b[1]);
             int a[] = fraction.multiplication(integrated.valueAt(interval[0])[0], integrated.valueAt(interval[0])[1], -1, 1);
             int sum[] = fraction.sum(b[0], b[1], a[0], a[1]);
             SwingUtilities.invokeLater(new GraphGUI(pols));

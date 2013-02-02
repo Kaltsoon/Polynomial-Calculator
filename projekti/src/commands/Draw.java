@@ -49,7 +49,6 @@ public class Draw implements Command{
         polynomials=new ArrayList<Polynomial>();
         mod = new StringModifier();
         String param[] = mod.readParameters(parameters);
-        System.out.println(param[0]);
         for(int i=0; i<param.length; i++){
             polynomials.add(mod.turnIntoPolynomial(param[i]));
         }
