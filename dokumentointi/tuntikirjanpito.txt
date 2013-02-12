@@ -2,7 +2,7 @@ TUNTIKIRJANPITO
 ---------------
 
 12.01.2013 - Githubin perustus, aihemäärittely, Netbeansprojekti -kansio 1h.
-18.01.2013 - Luokkakaavioita ja ensimmäiset luokat 2h.
+18.01.2013 - Luokkakaavioita ja ensimmäiset luokat 3h.
 19.01.2013 - Olemassaoleviin luokkiin täydennystä, lisää logiikkaluokkia 4h.
 20.01.2013 - Lisää logiikkaluokkia 2h.
 22.01.2013 - Käyttöliittymäluokkia 3h.
@@ -10,3 +10,4 @@ TUNTIKIRJANPITO
 26.01.2013 - Javadoceja ja sekvenssikaavioita 2h.
 30.01.2013 - Bugien korjaamista ja käyttöliittymän viimeistelyä 2h.
 02.02.2013 - Sekvenssikaavioita 1h.
+02.10.2013 - Sekvenssikaavio 1h.
