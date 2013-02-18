@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package commands;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.SwingUtilities;
 import domain.*;
 import utils.*;
-import gui.GraphGUI;
+import gui.*;
  /**
  * Laskee polynomin derivaatan
  */
@@ -31,7 +27,7 @@ public class Derivative implements Command{
         SwingUtilities.invokeLater(new GraphGUI(result));
         return result.toString();
     }
- /**
+/**
  * Laskee polynomin derivaatan
  * @param polynomial-olio
  * @return derivoitu polynomial-olio
@@ -40,6 +36,9 @@ public class Derivative implements Command{
         Polynomial result = new Polynomial();
         for(int i=0; i<polynomial.termNumber(); i++){
             Term current = polynomial.termAt(i);
+            if(polynomial.termAt(i).getExponent()==0){
+                continue;
+            }
             int coeff[] = fraction.multiplication(current.getCoefficient()[0], current.getCoefficient()[1], current.getExponent(), 1);
             result.addTerm(coeff[0], coeff[1], current.getExponent()-1);
         }

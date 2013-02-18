@@ -1,11 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package commands;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import domain.*;
 import utils.*;
 /**
@@ -174,8 +171,8 @@ public class Roots implements Command{
             
         }
     }
- /**
- * Laskee ensimäisen asteen polynomin nollakohdan
+  /**
+ * Laskee ensimäisen asteen polynomin nollakohdat
  */
     private void firstDegreeRoots(){
         if(polynomial.termNumber()==1){
