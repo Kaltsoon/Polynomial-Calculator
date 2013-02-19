@@ -1,1 +1,6 @@
-adasdasdasdasd
+Ohjelma koostuu komento-rajapinnan toteuttavista komentoluokista (roots,derivative,sum... jne.). Jokainen komento on suoritettava
+(execute), niillä on kuvaus itse komennosta (commandDescription, helppiä varten) ja kuvaus, minkä operaation komento 
+tekee (operationDescription) sekä osaa käsitellä sille annetut parametrit haluamallaan tavalla (handleParameters) Nämä komennot sisältyvät
+komentokokoelmaan, jonka kautta ne liitetään käyttöliittymään. Komentokokoelmasta saa suoritettua komennon oikean aivaimen
+avulla. Esim. "roots"->roots-luokka.
+  
